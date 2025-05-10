@@ -10,12 +10,11 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @author zjd
  */
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
-public class bootApplication
+public class BootApplication
 {
     public static void main(String[] args)
     {
-        // System.setProperty("spring.devtools.restart.enabled", "false");
-        SpringApplication.run(bootApplication.class, args);
+        SpringApplication.run(BootApplication.class, args);
         System.out.println("(@@@@@@@--System success \n" +
                 "    (_)                     (_)  \n" +
                 "    | |   _ _      ___      | |  \n" +
