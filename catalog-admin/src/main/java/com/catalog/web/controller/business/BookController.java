@@ -48,7 +48,7 @@ public class BookController extends BaseController
     @GetMapping("/list")
     public TableDataInfo list(Book book)
     {
-        //单例模式，通过ThreadLocal实现分页
+        //单例模式，结合ThreadLocal实现分页
         startPage();
         List<Book> list = bookService.selectBookList(book);
         return getDataTable(list);
