@@ -9,9 +9,8 @@ import com.catalog.system.domain.Book;
  */
 public class PaperBook extends Book {
 
-    public PaperBook(String title, Integer type, String author, String isbn) {
+    public PaperBook() {
 
-        super(title, type, author, isbn);
     }
 
     @Override

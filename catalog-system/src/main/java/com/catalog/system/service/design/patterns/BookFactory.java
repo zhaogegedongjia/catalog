@@ -1,8 +1,9 @@
 package com.catalog.system.service.design.patterns;
 
 import com.catalog.system.domain.Book;
-import com.catalog.system.domain.bo.Ebook;
 import com.catalog.system.domain.bo.PaperBook;
+import com.catalog.system.domain.vo.BookVo;
+import org.springframework.beans.BeanUtils;
 
 import java.nio.charset.CharacterCodingException;
 
@@ -14,13 +15,19 @@ import java.nio.charset.CharacterCodingException;
  */
 public class BookFactory {
 
-    public static Book createBook(Book book) throws CharacterCodingException {
-        switch (book.getType()) {
+    public static Book createBook(BookVo bookVo) throws CharacterCodingException {
+
+        switch (bookVo.getType()) {
             case 0:
-                return new PaperBook(book.getTitle(), book.getType(), book.getAuthor(), book.getIsbn());
+                //普通纸质书
+                Book book= new PaperBook();
+                //Prototype Copy
+                BeanUtils.copyProperties(bookVo, book);
+                return book;
             case 1:
-                Worker worker=new Worker();
-                return new Ebook(book.getTitle(),book.getType(), book.getAuthor(), book.getIsbn(),worker.build(book.getFileData()).getFileData());
+                //电纸书
+                Worker worker = new Worker();
+                return worker.build(bookVo);
 
             default:
                 throw new IllegalArgumentException("Unknown book type");

@@ -1,6 +1,7 @@
 package com.catalog.system.service.design.patterns;
 
 import com.catalog.system.domain.Book;
+import com.catalog.system.domain.vo.BookVo;
 
 import java.nio.charset.CharacterCodingException;
 
@@ -14,10 +15,10 @@ public abstract class Builder {
 
     /**
      * 保存
-     * @param fileData
+     * @param bookVo
      * @return 返回数据转换
      * @throws CharacterCodingException
      */
-    abstract Book build(String fileData) throws CharacterCodingException;
+    abstract Book build(BookVo bookVo) throws CharacterCodingException;
 
 }

@@ -3,6 +3,7 @@ package com.catalog.system.domain.bo;
 import com.catalog.system.domain.Book;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,21 +20,11 @@ public class Ebook extends Book {
     public Ebook() {
     }
 
-    public Ebook(String title, Integer type, String author, String isbn, String fileData) {
-        super(title, type, author, isbn, fileData);
-    }
-
     @Override
-    public String displayInfo() {
-
-        Path path = Paths.get(this.getFileData());
-        try {
-            String content = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
-            return content;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
+    public String displayInfo() throws UnsupportedEncodingException {
+        byte[] blobData = this.getFileData();
+        String textDes = new String(blobData, "UTF-8");
+        return textDes;
     }
 
 }

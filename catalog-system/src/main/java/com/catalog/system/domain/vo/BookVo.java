@@ -1,9 +1,7 @@
-package com.catalog.system.domain;
+package com.catalog.system.domain.vo;
 
 import com.catalog.common.annotation.Excel;
 import com.catalog.common.core.domain.BaseEntity;
-
-import java.io.UnsupportedEncodingException;
 
 /**
  * 图书 Book
@@ -11,23 +9,7 @@ import java.io.UnsupportedEncodingException;
  * @author zjd
  * @date 2025-05-09
  */
-public class Book extends BaseEntity {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * 默认构造函数
-     */
-    public Book() {
-    }
-
-
-
-    public Book(String title, Integer type, String author, String isbn) {
-        this.title = title;
-        this.type = type;
-        this.author = author;
-        this.isbn = isbn;
-    }
+public class BookVo{
 
     /**
      * id
@@ -46,10 +28,7 @@ public class Book extends BaseEntity {
     @Excel(name = "类型，默认0：纸质图书，1：电子图书")
     private Integer type;
 
-    /**
-     * 电子书存储二进制文件
-     */
-    private byte[] fileData;
+    private String textDes;
 
     /**
      * 作者
@@ -63,56 +42,51 @@ public class Book extends BaseEntity {
     @Excel(name = "isbn")
     private String isbn;
 
-    public String displayInfo() throws UnsupportedEncodingException {
-        return null;
+    public String getId() {
+        return id;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public String getId() {
-        return id;
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getTitle() {
-        return title;
+    public Integer getType() {
+        return type;
     }
 
     public void setType(Integer type) {
         this.type = type;
     }
 
-    public Integer getType() {
-        return type;
+    public String getTextDes() {
+        return textDes;
     }
 
-
-    public byte[] getFileData() {
-        return fileData;
-    }
-
-    public void setFileData(byte[] fileData) {
-        this.fileData = fileData;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setTextDes(String textDes) {
+        this.textDes = textDes;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getIsbn() {
         return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 }

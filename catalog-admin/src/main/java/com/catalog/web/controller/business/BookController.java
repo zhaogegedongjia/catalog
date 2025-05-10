@@ -3,6 +3,8 @@ package com.catalog.web.controller.business;
 import java.nio.charset.CharacterCodingException;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.catalog.system.domain.vo.BookVo;
 import com.catalog.system.service.design.patterns.BookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -68,11 +70,11 @@ public class BookController extends BaseController
 
 
     /**
-     * 新增纸质图书
+     * 新增图书
      */
     @PostMapping
-    public AjaxResult add(@RequestBody Book book) throws CharacterCodingException {
-        return toAjax(bookService.insertBook(BookFactory.createBook(book)));
+    public AjaxResult add(@RequestBody BookVo bookVo) throws CharacterCodingException {
+        return toAjax(bookService.insertBook(BookFactory.createBook(bookVo)));
     }
 
 

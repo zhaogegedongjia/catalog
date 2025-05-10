@@ -5,6 +5,7 @@ import com.catalog.common.core.domain.AjaxResult;
 import com.catalog.common.core.page.TableDataInfo;
 import com.catalog.common.utils.poi.ExcelUtil;
 import com.catalog.system.domain.Book;
+import com.catalog.system.domain.vo.BookVo;
 import com.catalog.system.service.IBookService;
 import com.catalog.system.service.design.patterns.BookFactory;
 import io.swagger.annotations.Api;
@@ -66,12 +67,11 @@ public class TestBookController extends BaseController
     }
 
     /**
-     * 新增纸质图书
+     * 新增图书
      */
-    @ApiOperation("新增图书")
     @PostMapping
-    public AjaxResult add(@RequestBody Book book) throws CharacterCodingException {
-        return toAjax(bookService.insertBook(BookFactory.createBook(book)));
+    public AjaxResult add(@RequestBody BookVo bookVo) throws CharacterCodingException {
+        return toAjax(bookService.insertBook(BookFactory.createBook(bookVo)));
     }
 
 
