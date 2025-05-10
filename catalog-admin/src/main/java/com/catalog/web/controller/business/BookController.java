@@ -3,7 +3,6 @@ package com.catalog.web.controller.business;
 import java.nio.charset.CharacterCodingException;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
-
 import com.catalog.system.service.design.patterns.BookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +34,15 @@ public class BookController extends BaseController
     private IBookService bookService;
 
     /**
+     * 根据主键查询图书详细信息
+     */
+    @GetMapping(value = "/{id}")
+    public AjaxResult getInfo(@PathVariable("id") String id)
+    {
+        return success(bookService.selectBookById(id));
+    }
+
+    /**
      * 查询图书列表
      */
     @GetMapping("/list")
@@ -57,14 +65,7 @@ public class BookController extends BaseController
         util.exportExcel(response, list, "图书数据");
     }
 
-    /**
-     * 根据主键查询图书详细信息
-     */
-    @GetMapping(value = "/{id}")
-    public AjaxResult getInfo(@PathVariable("id") String id)
-    {
-        return success(bookService.selectBookById(id));
-    }
+
 
     /**
      * 新增纸质图书
