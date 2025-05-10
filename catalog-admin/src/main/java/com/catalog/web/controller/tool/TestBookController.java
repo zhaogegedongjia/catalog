@@ -33,6 +33,7 @@ public class TestBookController extends BaseController
     /**
      * 查询图书列表
      */
+    @ApiOperation("列表图书")
     @GetMapping("/list")
     public TableDataInfo list(Book book)
     {
@@ -45,6 +46,7 @@ public class TestBookController extends BaseController
     /**
      * 导出图书列表
      */
+    @ApiOperation("导出图书列表")
     @PostMapping("/export")
     public void export(HttpServletResponse response, Book book)
     {
@@ -56,6 +58,7 @@ public class TestBookController extends BaseController
     /**
      * 根据主键查询图书详细信息
      */
+    @ApiOperation("根据主键查询图书")
     @GetMapping(value = "/{id}")
     public AjaxResult getInfo(@PathVariable("id") String id)
     {
@@ -75,6 +78,7 @@ public class TestBookController extends BaseController
     /**
      * 修改图书
      */
+    @ApiOperation("修改图书实体")
     @PutMapping
     public AjaxResult edit(@RequestBody Book book)
     {
@@ -84,6 +88,7 @@ public class TestBookController extends BaseController
     /**
      * 删除图书，根据前端选择多个id可批量删除
      */
+    @ApiOperation("删除图书，也可根据前端选择多个id可批量删除")
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable String[] ids)
     {
